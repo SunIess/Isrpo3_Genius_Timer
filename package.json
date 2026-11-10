@@ -32,6 +32,21 @@
           "type": "number",
           "default": 25,
           "description": "Длительность одной сессии (в минутах)"
+        },
+        "focusTimer.breakMinutes": {
+          "type": "number",
+          "default": 5,
+          "description": "Длительность перерыва (в минутах)"
+        },
+        "focusTimer.soundEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Показывать уведомление (эмодзи) по окончании"
+        },
+        "focusTimer.autoStartNext": {
+          "type": "boolean",
+          "default": false,
+          "description": "Автоматически запускать перерыв после сессии"
         }
       }
     }
