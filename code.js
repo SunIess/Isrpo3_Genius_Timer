@@ -8,13 +8,20 @@ let isBreak = false;
 
 
 function activate(context) {
-
-  const startCmd = vscode.commands.registerCommand('focusTimer.start', () => {
+  const startCmd = vscode.commands.registerCommand('focusTimer.start', async () => {
     if (timerInterval != null) {
       vscode.window.showInformationMessage('⏳ Таймер уже запущен!');
       return;
     }
-    startTimer(context, false);
+    const con = vscode.workspace.getConfiguration('focusTimer');
+    const defaultMinutes = con.get('sessionMinutes', 25);
+    const input = await vscode.window.showInputBox({
+      prompt: 'На сколько минут запустить таймер?',
+      value: String(defaultMinutes) 
+    });
+    const min = parseInt(input, 10);
+
+    startTimer(context, false, min);
   });
   const stopCmd = vscode.commands.registerCommand('focusTimer.stop', () => {
     if (!timerInterval) {
@@ -38,12 +45,25 @@ function activate(context) {
   context.subscriptions.push(statsCmd);
 }
 
-function startTimer(context, breakMode) {
+function startTimer(context, breakMode, minutes) {
   const con = vscode.workspace.getConfiguration('focusTimer');
   isBreak = breakMode;
-  const mins = isBreak ? con.get('breakMinutes', 5) : con.get('sessionMinutes', 25);
+
+  let mins;
+  if (minutes != null) {
+    mins = minutes;
+  }else {
+    if (isBreak) {
+      mins = con.get('breakMinutes', 5);
+    }else {
+      mins = con.get('sessionMinutes', 25);
+    }
+  }
+
   secbefend = mins * 60;
   sessionStartTime = Date.now();
+
+
   know = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
   know.text = isBreak ? `☕ ${mins}:00` : `⏳ ${mins}:00`;
   know.show();

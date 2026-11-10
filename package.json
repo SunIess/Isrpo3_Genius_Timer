@@ -2,7 +2,7 @@
   "name": "focus-timer",
   "displayName": "Focus Timer",
   "description": "Таймер продуктивности",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": { "vscode": "^1.80.0" },
   "activationEvents": [
     "onCommand:focusTimer.start",
@@ -41,12 +41,12 @@
         "focusTimer.soundEnabled": {
           "type": "boolean",
           "default": true,
-          "description": "Показывать уведомление (эмодзи) по окончании"
+          "description": "Показывать уведомление со звуком (эмодзи) по окончании"
         },
         "focusTimer.autoStartNext": {
           "type": "boolean",
           "default": false,
-          "description": "Автоматически запускать перерыв после сессии"
+          "description": "Автоматически запускать следующую сессию или перерыв"
         }
       }
     }
