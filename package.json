@@ -1,0 +1,29 @@
+{
+  "name": "focus-timer",
+  "displayName": "Focus Timer",
+  "description": "Таймер продуктивности",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.80.0" },
+  "activationEvents": [
+    "onCommand:focusTimer.start"
+  ],
+  "main": "./code.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "focusTimer.start",
+        "title": "Focus Timer: Запустить таймер"
+      }
+    ],
+    "configuration": {
+      "title": "Focus Timer",
+      "properties": {
+        "focusTimer.sessionMinutes": {
+          "type": "number",
+          "default": 25,
+          "description": "Длительность одной сессии (в минутах)"
+        }
+      }
+    }
+  }
+}
