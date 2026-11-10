@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "engines": { "vscode": "^1.80.0" },
   "activationEvents": [
-    "onCommand:focusTimer.start"
+    "onCommand:focusTimer.start",
+    "onCommand:focusTimer.stop"
   ],
   "main": "./code.js",
   "contributes": {
@@ -13,6 +14,10 @@
       {
         "command": "focusTimer.start",
         "title": "Focus Timer: Запустить таймер"
+      },
+      {
+        "command": "focusTimer.stop",
+        "title": "Focus Timer: Остановить таймер"
       }
     ],
     "configuration": {
