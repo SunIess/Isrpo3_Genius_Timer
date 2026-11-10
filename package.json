@@ -6,7 +6,8 @@
   "engines": { "vscode": "^1.80.0" },
   "activationEvents": [
     "onCommand:focusTimer.start",
-    "onCommand:focusTimer.stop"
+    "onCommand:focusTimer.stop",
+    "onCommand:focusTimer.showStats"
   ],
   "main": "./code.js",
   "contributes": {
@@ -18,6 +19,10 @@
       {
         "command": "focusTimer.stop",
         "title": "Focus Timer: Остановить таймер"
+      },
+      {
+        "command": "focusTimer.showStats",
+        "title": "Focus Timer: Показать статистику"
       }
     ],
     "configuration": {
